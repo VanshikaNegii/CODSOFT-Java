@@ -1,1 +1,82 @@
+import java.util.Scanner;
+class BankAccount {
+    private float balance=99000;
+    public float getBalance() {
+        return balance;
+    }
+    void deposit(float amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println( amount + " ruppees deposited successfuly.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    void withdraw(float amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println(amount + "ruppees withdrawn successfuly.");
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+}
+
+class ATM {
+    private BankAccount bankAccount;
+
+    void setBankAccount(BankAccount account) {
+        bankAccount = account;
+    }
+
+    void UserInterface() {
+        System.out.println("1. Check Balance");
+        System.out.println("2. Deposit");
+        System.out.println("3. Withdraw");
+        System.out.println("4. Exit");
+        System.out.println("- - - - - - - - - - -");
+    }
+
+    void processOption(int option) {
+        Scanner sc = new Scanner(System.in);
+
+        switch (option) {
+            case 1:
+                System.out.println("Your balance: " + bankAccount.getBalance());
+                break;
+            case 2:
+                System.out.print("Enter deposit amount: $");
+                float depositAmount = sc.nextFloat();
+                bankAccount.deposit(depositAmount);
+                break;
+            case 3:
+                System.out.print("Enter withdrawal amount: $");
+                float withdrawalAmount = sc.nextFloat();
+                bankAccount.withdraw(withdrawalAmount);
+                break;
+            case 4:
+                System.out.println("Thank you!");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid option. Please select a valid option.");
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BankAccount account = new BankAccount();
+        ATM atm = new ATM();
+
+        atm.setBankAccount(account);
+        while (true) {
+            atm.UserInterface();
+            System.out.print("Select an option: ");
+            int option = sc.nextInt();
+            atm.processOption(option);
+        }
+    }
+}
 
