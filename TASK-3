@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.Scanner;
  class ATM {
     int Total = 10000;
-	
     public void display() {
     	System.out.println("- - - - - - - - - - - -");
         System.out.println("1. Withdraw amount.");
