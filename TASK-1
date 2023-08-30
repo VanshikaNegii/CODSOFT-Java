@@ -9,23 +9,19 @@ public class NumberrGame {
         while (true) {
             double random = Math.random();
             int n = (int) (random * range);
-            
-
             for (int attempt = 1; attempt <= TotalAttempts; attempt++) {
                 System.out.print("Attempt " + attempt + "/" + TotalAttempts + ": ");
                 int guess = sc.nextInt();
-
                 if (guess == n) {
                     System.out.println("Correct!!");
                     break;
                 } else if (guess < n) {
-                    System.out.println("Too low.");
+                    System.out.println("Think of bigger number.");
                 } else {
-                    System.out.println("Too high.");
+                    System.out.println("Think of smaller number.");
                 }
-
                 if (attempt == TotalAttempts) {
-                    System.out.println("You lose! The number was: " + n);
+                    System.out.println("You lostt! The number was: " + n);
                 }
             }  
         }
